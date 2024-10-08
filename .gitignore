@@ -163,3 +163,4 @@ cython_debug/
 
 # fuck csvs they take long to package from git
 .csv
+./data/csv
