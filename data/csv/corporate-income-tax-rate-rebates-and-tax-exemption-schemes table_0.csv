@@ -1,0 +1,2 @@
+"If company meets local employee condition and receives CIT Rebate Cash Grant of $2,000","If company does not meet local employee condition and does not receive CIT Rebate Cash Grant of $2,000",context
+"If CIT Rebate ≤ $2,000, no CIT Rebate to be given.If CIT Rebate > $2,000, CIT Rebate (capped at $40,000) less $2,000 to be given.","If CIT Rebate > $0, CIT Rebate (capped at $40,000) to be given.",corporate-income-tax-rate-rebates-and-tax-exemption-schemes table_0

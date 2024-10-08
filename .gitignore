@@ -161,5 +161,4 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# csv 
-*.csv
+# currently not gonna gitignore csvs, since we can quite easily use them if we don't want to get tabular from online every single time we rerun code? See how
