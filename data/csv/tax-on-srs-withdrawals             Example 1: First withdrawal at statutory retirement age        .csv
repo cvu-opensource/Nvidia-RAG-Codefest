@@ -1,7 +1,0 @@
-Unnamed: 0,Type of withdrawal,Amount subject to tax,5% penalty imposed?,context
-Penalty-free withdrawal,Withdrawal on or after prescribed retirement age (withdrawal can be spread over 10 years from the date of first penalty-free withdrawal),50% of withdrawal sum,No,tax-on-srs-withdrawals             Example 1: First withdrawal at statutory retirement age        
-,Withdrawal on medical ground (physical or mental incapacity; partial withdrawal on grounds of terminal illness),50% of withdrawal sum,No,tax-on-srs-withdrawals             Example 1: First withdrawal at statutory retirement age        
-,Withdrawal in full due to terminal illness,"50% of full withdrawal sum less an exempt amount of up to $400,000",No,tax-on-srs-withdrawals             Example 1: First withdrawal at statutory retirement age        
-,In the event of bankruptcy,100% of withdrawal sum,No,tax-on-srs-withdrawals             Example 1: First withdrawal at statutory retirement age        
-,Withdrawal in one lump sum by a foreigner (with at least 10 years holding period),50% of lump sum,No,tax-on-srs-withdrawals             Example 1: First withdrawal at statutory retirement age        
-Other withdrawals,Early withdrawals before prescribed retirement age,100% of withdrawal sum,Yes,tax-on-srs-withdrawals             Example 1: First withdrawal at statutory retirement age        

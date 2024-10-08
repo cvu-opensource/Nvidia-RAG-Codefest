@@ -1,9 +1,0 @@
-Number,Item description,context
-1,Address.,employment-records Employee records
-2,"NRIC number. For non-citizens, work pass number and expiry date.",employment-records Employee records
-3,Date of birth.,employment-records Employee records
-4,Gender.,employment-records Employee records
-5,Date of starting employment.,employment-records Employee records
-6,Date of leaving employment.,employment-records Employee records
-7,"Working hours, including duration of meals and tea breaks.",employment-records Employee records
-8,Dates and other details of public holidays and leave taken.,employment-records Employee records

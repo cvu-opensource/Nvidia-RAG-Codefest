@@ -1,3 +1,0 @@
-Transaction,Invoice date,Invoice number,Payment date,When to account for GST,context
-Sales,15 Feb 2019,2,1 Apr 2019,"You will account for output tax based on time of supply rules. In this case, as the tax invoice was issued first, the output tax will be accounted for in your GST return for the period ended 31 Mar 2019.",cash-accounting-scheme             Example        
-Purchases,1 Mar 2019,54321,15 Apr 2019,"You will claim input tax based on date of your supplier's tax invoice, although you have not made payment. As the tax invoice is dated 1 Mar 2019, you will claim the input tax in your GST return for the period ended 31 Mar 2019.",cash-accounting-scheme             Example        
