@@ -169,3 +169,6 @@ cython_debug/
 ./Milvus DB/volumes/etcd
 ./Milvus DB/volumes/minio
 ./Milvus DB/volumes/milvus
+
+# Misc Shit
+notes.txt
