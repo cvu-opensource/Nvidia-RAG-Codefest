@@ -3,28 +3,28 @@ Using NIM APIs to implement a RAG system that ingests data scraped from the web,
 I love NIM! NIM is the goat!
 
 # Current list of to-dos:
-1. Simple User Interface
- - Send in queries with texts or images
- - Display responses in a chat-like format
- - User feedback
+1. **Simple User Interface**
+  - Send in queries with texts or images
+  - Display responses in a chat-like format
+  - User feedback
 
-2. Data Handler
- - Embed images with CLiP/ViT/CNN or something, maybe use a separate model to extract features 
- - Store more metadata (eg. tags, date)
+2. **Data Handler**
+  - Embed images with CLiP/ViT/CNN or something, maybe use a separate model to extract features 
+  - Store more metadata (eg. tags, date)
 
-3. MilvusDB
- - Find a way to check/monitor sites for changes regularly and upsert into db
- - Use metadata stored to search for more relevant data instead of searching through all vectors
+3. **MilvusDB**
+  - Find a way to check/monitor sites for changes regularly and upsert into db
+  - Use metadata stored to search for more relevant data instead of searching through all vectors
 
-4. Prompt Engineering
- - Figure out how
+4. **Prompt Engineering**
+  - Figure out how
 
-5. Containerise
- - 4 containers for 4 segmented parts
-  - UI
-  - DB
-  - Ingestion
-  - Inference
+5. **Containerise**
+  - 4 containers for 4 segmented parts
+    - UI
+    - DB
+    - Ingestion
+    - Inference
 
 # Our current competition:
 
