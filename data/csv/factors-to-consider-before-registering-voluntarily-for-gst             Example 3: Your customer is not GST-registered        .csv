@@ -1,6 +1,0 @@
-Unnamed: 0,Before GST registration,After GST registration,After GST registration.1,context
-,Before GST registration,Increase sales price,Maintain sales price,factors-to-consider-before-registering-voluntarily-for-gst             Example 3: Your customer is not GST-registered        
-Purchase price from supplier,$100(no GST),$100(no GST),$100(no GST),factors-to-consider-before-registering-voluntarily-for-gst             Example 3: Your customer is not GST-registered        
-Sales price to customer,$200(no GST),$218(GST $18 (9% x $200)),$200(GST $16.51 (9/109 x $200)),factors-to-consider-before-registering-voluntarily-for-gst             Example 3: Your customer is not GST-registered        
-GST(payable to IRAS or claimable from IRAS),$0,Payable $18 GST,Payable $16.51 GST,factors-to-consider-before-registering-voluntarily-for-gst             Example 3: Your customer is not GST-registered        
-Gross profit(Sale price - Purchase price - GST paid to IRAS),$100,$100($218 - $100 - $18),$83.49($200 - $100 - $16.51),factors-to-consider-before-registering-voluntarily-for-gst             Example 3: Your customer is not GST-registered        

@@ -1,8 +1,0 @@
-Chargeable Income,Tax Payable,context
-"Tax on first $30,000",$200.00,"sample-income-tax-calculations             Example 1: 35-year-old with employment income of $50,000 in 2023        "
-"Tax on next $4,750 @ 3.5%",$166.25,"sample-income-tax-calculations             Example 1: 35-year-old with employment income of $50,000 in 2023        "
-Tax Payable on Chargeable Income,$366.25 ($200 + $166.25),"sample-income-tax-calculations             Example 1: 35-year-old with employment income of $50,000 in 2023        "
-"Less: Personal Income Tax Rebate (50%), capped at $200",$183.13,"sample-income-tax-calculations             Example 1: 35-year-old with employment income of $50,000 in 2023        "
-Tax Payable after Personal Income Tax Rebate,$183.12,"sample-income-tax-calculations             Example 1: 35-year-old with employment income of $50,000 in 2023        "
-Less: Parenthood Tax Rebate,$183.12,"sample-income-tax-calculations             Example 1: 35-year-old with employment income of $50,000 in 2023        "
-Net Tax Payable for YA 2024,$0,"sample-income-tax-calculations             Example 1: 35-year-old with employment income of $50,000 in 2023        "

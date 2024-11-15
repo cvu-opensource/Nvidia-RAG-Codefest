@@ -162,8 +162,8 @@ cython_debug/
 #.idea/
 
 # fuck csv 
-# *.csv
-# ./data/csv
+csv
+data/csv
 
 # MilvusDB
 ./Milvus DB/volumes/etcd
