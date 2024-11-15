@@ -1,0 +1,5 @@
+Computation,$,context
+Fees paid to Hong Kong or USA company,"10,000 (net of withholding tax)",payments-to-non-resident-company             Services        
+Regrossed amount [Gross amount / (100% - Applicable tax rate)],"10,000 / (100% - 17%*) = 12,048.19",payments-to-non-resident-company             Services        
+"Less: Tax deducted ($12,048.19 x 17%)",2048.19,payments-to-non-resident-company             Services        
+Net amount paid to non-resident,10000.00,payments-to-non-resident-company             Services        

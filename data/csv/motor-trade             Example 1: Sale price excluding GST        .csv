@@ -1,0 +1,5 @@
+GST,context
+= (Selling Price - ARF - COE - RF - Road Tax) x 9%,motor-trade             Example 1: Sale price excluding GST        
+"= ($155,000 - $20,000 - $95,000 - $350 - $400) x 9%",motor-trade             Example 1: Sale price excluding GST        
+"= $39,250 x 9%",motor-trade             Example 1: Sale price excluding GST        
+"= $3,532.50",motor-trade             Example 1: Sale price excluding GST        

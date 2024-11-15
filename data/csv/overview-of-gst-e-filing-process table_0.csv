@@ -1,0 +1,4 @@
+Preparer,Approver,context
+Can retrieve the GST return after logging into myTax Portal.,Can retrieve the GST return after logging into myTax Portal.,overview-of-gst-e-filing-process table_0
+Can complete GST return and save it as a draft.,"Can complete GST return and save it as a draft, or review the GST return completed by the Preparer.",overview-of-gst-e-filing-process table_0
+Cannot submit the GST return to IRAS.“Pending Approval” message will be displayed on screen.Has to inform the ‘Approver’ that the draft is ready for review before submission to IRAS.,Can submit the GST return to IRAS.,overview-of-gst-e-filing-process table_0

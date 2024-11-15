@@ -1,0 +1,8 @@
+Type of gambling activities,Method of calculating gambling duty,context
+1. Totalisator betting in connection with horse racing,25% x (Amount of bets received - Winnings paid out - GST *),Betting-Lotteries-and-Sweepstakes table_0
+"2. Sporting event (e.g. football betting with fixed odds, motor racing)",25% x (Amount of bets received - Winnings paid out - GST *),Betting-Lotteries-and-Sweepstakes table_0
+3. Horse racing with commingling arrangement,25% x (Take out amount – GST *),Betting-Lotteries-and-Sweepstakes table_0
+4. Other totalisator bet (e.g. football pari-mutuel betting),30% x (Amount of bets received - GST *),Betting-Lotteries-and-Sweepstakes table_0
+5. General bet,30% x (Amount of bets received - GST *),Betting-Lotteries-and-Sweepstakes table_0
+"6. Lotteries (e.g. 4D, TOTO, Singapore Sweep)",30% x (Amount of bets received - GST *),Betting-Lotteries-and-Sweepstakes table_0
+7. Sweepstakes,30% x (Amount contributed towards the sweepstake - GST *),Betting-Lotteries-and-Sweepstakes table_0

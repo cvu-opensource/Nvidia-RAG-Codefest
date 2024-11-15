@@ -1,0 +1,2 @@
+SRS Withdrawn,Amount Subject to Tax,Withholding Tax At 24%*,Actual Amount Received,context
+"$300,000","50% x $300,000 = $150,000","24% x $150,000 = $36,000","$300,000 - $36,000 = $264,000",calculating-withholding-tax table_0

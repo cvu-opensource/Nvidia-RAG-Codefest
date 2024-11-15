@@ -1,0 +1,2 @@
+SRS Withdrawn,Amount Subject To Tax,Withholding Tax At 24%,Actual Tax Rate Applicable: 15%,Amount To Be Refunded,context
+"$300,000","50% x $300,000 = $150,000","24% x $150,000 = $36,000","15% x $150,000 = $22,500","$36,000 - $22,500 = $13,500",calculating-withholding-tax table_1

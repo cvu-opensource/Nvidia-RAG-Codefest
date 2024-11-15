@@ -1,0 +1,4 @@
+Date of NOA / F5 Received,Tax Amount,Penalty Imposed,context
+5 Nov 2024,"$3,000",$150,"late-payment-or-non-payment-of-gst             Example 3: Penalty imposed for late payment, GST liability is $0        "
+11 Nov 2024,"($3,000)",($150),"late-payment-or-non-payment-of-gst             Example 3: Penalty imposed for late payment, GST liability is $0        "
+Revised GST and 5% Penalty,$0,$0,"late-payment-or-non-payment-of-gst             Example 3: Penalty imposed for late payment, GST liability is $0        "

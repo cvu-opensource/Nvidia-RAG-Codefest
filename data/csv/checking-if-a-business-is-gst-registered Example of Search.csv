@@ -1,0 +1,17 @@
+Search By,Search By.1,context
+Unique Entity Number (UEN) Some entities may have UEN as their GST Registration Number,Unique Entity Number (UEN) Some entities may have UEN as their GST Registration Number,checking-if-a-business-is-gst-registered Example of Search
+Description,Example,checking-if-a-business-is-gst-registered Example of Search
+"Local Companies (e.g. Pte. Ltd., Ltd. Co.)",200312345A,checking-if-a-business-is-gst-registered Example of Search
+Partnerships,52912345A,checking-if-a-business-is-gst-registered Example of Search
+Foreign Companies,T08FC1234A,checking-if-a-business-is-gst-registered Example of Search
+Limited Liability Partnerships (LLP),T08LL1234A,checking-if-a-business-is-gst-registered Example of Search
+"Clubs, Associations, Societies, Government Agencies & Others",T08SS1234A,checking-if-a-business-is-gst-registered Example of Search
+GST Registration Number (GST Reg No.),GST Registration Number (GST Reg No.),checking-if-a-business-is-gst-registered Example of Search
+Description,Example,checking-if-a-business-is-gst-registered Example of Search
+Business under GST group/ divisional registration Sole proprietorships (Reference number for GST matters) Overseas Vendors registered under Simplified Pay-only Regime,M91234567X MR2345678A MB2345678A MX2345678A,checking-if-a-business-is-gst-registered Example of Search
+Business Name,Business Name,checking-if-a-business-is-gst-registered Example of Search
+Description,Example,checking-if-a-business-is-gst-registered Example of Search
+Minimum of first five characters of the business' name is required,ABCDE,checking-if-a-business-is-gst-registered Example of Search
+NRIC,NRIC,checking-if-a-business-is-gst-registered Example of Search
+Description,Example,checking-if-a-business-is-gst-registered Example of Search
+Individuals who own sole-proprietorships,S3456789Z T1234567J,checking-if-a-business-is-gst-registered Example of Search

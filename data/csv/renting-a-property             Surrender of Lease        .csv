@@ -1,0 +1,5 @@
+Average Annual Rent (AAR),Lease Duty Rates,context
+"AAR does not exceed $1,000",Exempted,renting-a-property             Surrender of Lease        
+"AAR exceeds $1,000","AAR exceeds $1,000",renting-a-property             Surrender of Lease        
+Lease period of 4 years or less,0.4% of total rent for the period of the lease,renting-a-property             Surrender of Lease        
+Lease period of more than 4 years or for any indefinite term,0.4% of 4 times the AAR for the period of the lease,renting-a-property             Surrender of Lease        

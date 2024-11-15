@@ -1,0 +1,4 @@
+For this category of employee,Hourly basic rate of pay is,context
+Monthly-rated employee,(12 x Monthly basic rate of pay) / (52 x 44),hours-of-work-overtime-and-rest-days How overtime pay is calculated
+Daily-rated employee,Daily pay at the basic rate / Working hours per day,hours-of-work-overtime-and-rest-days How overtime pay is calculated
+Piece-rated employee,Total weekly pay at the basic rate of pay / Total number of hours worked in the week,hours-of-work-overtime-and-rest-days How overtime pay is calculated

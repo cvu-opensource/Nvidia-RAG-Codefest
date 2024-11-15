@@ -1,0 +1,6 @@
+Tax Computation,$,context
+Chargeable Income at 10%,400000,corporate-income-tax-rate-rebates-and-tax-exemption-schemes             How the Rebates Are Computed        
+Chargeable Income at 17% (After Exempt Amount),497500,corporate-income-tax-rate-rebates-and-tax-exemption-schemes             How the Rebates Are Computed        
+"Gross Tax Payable ($400,000 x 10% + $497,500 x 17%)",124575,corporate-income-tax-rate-rebates-and-tax-exemption-schemes             How the Rebates Are Computed        
+"Less: CIT Rebate $124,575 x 50% = $62,287.50 (capped at $40,000) less $2,000 CIT Rebate Cash Grant","(38,000)",corporate-income-tax-rate-rebates-and-tax-exemption-schemes             How the Rebates Are Computed        
+Net Tax Payable,86575,corporate-income-tax-rate-rebates-and-tax-exemption-schemes             How the Rebates Are Computed        

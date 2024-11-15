@@ -1,0 +1,5 @@
+S/N,Types of retirement funds/schemes,Is it taxable?,context
+1,"Retirement benefits received from government pension schemes under any written law relating to pensions in Singapore (including the Pensions Act, Singapore Armed Forces Act and Parliamentary Pensions Act)",Not taxable,i-have-retired table_0
+2,Retirement benefits received from CPF/designated funds,Not taxable,i-have-retired table_0
+3,Retirement benefits received from approved pension and provident funds before retirement,Taxable on the total amount of retirement benefits received.,i-have-retired table_0
+4,Retirement benefits received from approved pension and provident funds upon retirement based on the statutory retirement age,Taxable only on funds accrued from 1 Jan 1993 to date of retirement. Funds will be taxed at the time the benefits are received.,i-have-retired table_0

@@ -1,0 +1,6 @@
+Chargeable Income,Tax Payable,context
+"Tax on first $200,000","$21,150","sample-income-tax-calculations             Example 2: 64-year-old with employment income of $250,000 in 2023        "
+"Tax on next $34,100 @ 19%","$6,479","sample-income-tax-calculations             Example 2: 64-year-old with employment income of $250,000 in 2023        "
+Tax Payable on Chargeable Income,"$27,629 ($21,150 + $6,479)","sample-income-tax-calculations             Example 2: 64-year-old with employment income of $250,000 in 2023        "
+"Less: Personal Income Tax Rebate (50%), capped at $200",$200,"sample-income-tax-calculations             Example 2: 64-year-old with employment income of $250,000 in 2023        "
+Net Tax Payable,"$27,429","sample-income-tax-calculations             Example 2: 64-year-old with employment income of $250,000 in 2023        "

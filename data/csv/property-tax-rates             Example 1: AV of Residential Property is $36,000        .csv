@@ -1,0 +1,4 @@
+Annual Value ($),Tax rate effective from 1 Jan 2024 to 31 Dec 2024,Property tax payable,context
+"First 8,000",X 0%,= 0,"property-tax-rates             Example 1: AV of Residential Property is $36,000        "
+"Next 22,000",X 4%,= $880,"property-tax-rates             Example 1: AV of Residential Property is $36,000        "
+"Next 6,000",X 6%,= $360,"property-tax-rates             Example 1: AV of Residential Property is $36,000        "

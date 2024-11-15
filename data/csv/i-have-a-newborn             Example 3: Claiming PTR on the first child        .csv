@@ -1,0 +1,6 @@
+Unnamed: 0,Mr Koh,Mrs Koh,context
+Tax Payable on Chargeable Income,"$2,930","$1,802.30",i-have-a-newborn             Example 3: Claiming PTR on the first child        
+Less: Personal Income Tax Rebate,$200,$200,i-have-a-newborn             Example 3: Claiming PTR on the first child        
+Tax Payable after Personal Income Tax Rebate,"$2,730","$1,602.30",i-have-a-newborn             Example 3: Claiming PTR on the first child        
+Less: Parenthood Tax Rebate,"$2,500*","$1,602.30*",i-have-a-newborn             Example 3: Claiming PTR on the first child        
+Net Tax Payable,$230.00,$0,i-have-a-newborn             Example 3: Claiming PTR on the first child        
