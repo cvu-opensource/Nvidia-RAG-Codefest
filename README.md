@@ -15,6 +15,7 @@ I love NIM! NIM is the goat!
 3. **MilvusDB**
   - Find a way to check/monitor sites for changes regularly and upsert into db
   - Use metadata stored to search for more relevant data instead of searching through all vectors
+  - Implement reranking 
 
 4. **Prompt Engineering**
   - Figure out how
