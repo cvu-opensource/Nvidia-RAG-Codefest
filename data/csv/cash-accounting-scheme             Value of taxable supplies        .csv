@@ -1,5 +1,0 @@
-Mode,Date of payment received,Date of payment made,context
-Cash,Date you receive the cash from your customer,Date your supplier receives the cash from you,cash-accounting-scheme             Value of taxable supplies        
-Cheque,"Date you present the cheque to the bank (i.e. the bank-in date). For a cheque that is dishonoured, payment is treated as received on the date which you present the new cheque to the bank","Date of the cheque, or the date you present the cheque to your supplier, whichever is later",cash-accounting-scheme             Value of taxable supplies        
-Nets facility/credit card etc.,Date these establishments transfer the money to you,Date you make payment using the facility,cash-accounting-scheme             Value of taxable supplies        
-Giro/telegraphic transfer,Date your bank receives the money,Date your bank deducts the money,cash-accounting-scheme             Value of taxable supplies        

@@ -1,7 +1,0 @@
-Transactions,GST Treatment,context
-Net realised gain or loss by Genco / Market Support Services Licensee (MSSL) = Hedge Quantity x (Vesting Contract Reference Price - Hedge Price),Exempt supply,energy table_2
-Passing of vesting gains / losses by MSSL to Retailer,No supply,energy table_2
-Passing of vesting gains / losses by MSSL / Retailer to contestable consumer,Taxable supply,energy table_2
-Passing of vesting gains / losses by MSSL to non-contestable consumer,Taxable supply,energy table_2
-Passing of vesting gains / losses by Retailer to Genco (as part of the Contract for Differences between them),Exempt supply,energy table_2
-Settlement through Market Operator = Hedge Quantity x (Vesting Contract Reference Price - Hedge Price),No supply,energy table_2

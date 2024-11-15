@@ -1,5 +1,0 @@
-Computation,$,context
-Fees paid to Hong Kong or USA company,"10,000 (net of withholding tax)",payments-that-are-subject-to-withholding-tax             Services        
-Regrossed amount [Gross amount / (100% - Applicable tax rate)],"10,000 / (100% - 17%*) = 12,048.19",payments-that-are-subject-to-withholding-tax             Services        
-"Less: Tax deducted ($12,048.19 x 17%)",2048.19,payments-that-are-subject-to-withholding-tax             Services        
-Net amount paid to non-resident,10000.00,payments-that-are-subject-to-withholding-tax             Services        

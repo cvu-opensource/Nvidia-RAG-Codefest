@@ -1,4 +1,0 @@
-Transactions,GST Treatment,context
-Net realised gain or loss by Electricity Generation Company (Genco) / Retailer = Hedge Quantity x (Contract Reference Price - Hedge Price),Exempt supply,energy table_1
-Settlement through Market Operator = Hedge Quantity x Uniform Singapore Energy Price (USEP),No supply,energy table_1
-Payment for bilateral contract outside Market Operator = Hedge Quantity x Hedge Price,No supply,energy table_1
