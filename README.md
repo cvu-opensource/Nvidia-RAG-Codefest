@@ -1,15 +1,34 @@
 # Project description
-Using NIM APIs to implement a RAG system that ingests data scraped from the web, pdfs, or images and returns an ouput ranked by similarity
+Using NIM APIs to implement a RAG system that ingests data scraped from the web, pdfs, or images and returns an output ranked by similarity
 I love NIM! NIM is the goat!
 
 # Current list of to-dos:
-1. Scrape data from sources
-2. Get a handle on prompt engineering for our task?
-3. Start drafting pptx https://docs.google.com/presentation/d/1HsHUY0yjc2-uOVF2oTl7VbbhbLTulvA7gzfImX9y598/edit?usp=drive_link
+1. Simple User Interface
+ - Send in queries with texts or images
+ - Display responses in a chat-like format
+ - User feedback
+
+2. Data Handler
+ - Embed images with CLiP/ViT/CNN or something, maybe use a separate model to extract features 
+ - Store more metadata (eg. tags, date)
+
+3. MilvusDB
+ - Find a way to check/monitor sites for changes regularly and upsert into db
+ - Use metadata stored to search for more relevant data instead of searching through all vectors
+
+4. Prompt Engineering
+ - Figure out how
+
+5. Containerise
+ - 4 containers for 4 segmented parts
+  - UI
+  - DB
+  - Ingestion
+  - Inference
 
 # Our current competition:
 
-### 1) IRAC 28 + digispecs2 + ray
+### 1) IRAC 28 + digispecs2... bob.
 ### 2) A fireside chat with the IRAS bot. It reads:
 
 Me: I am a permanent-resident earning $50,000 income. What is my tax rate?
