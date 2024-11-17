@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  ui:
+    build:
+      context: .
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+
+  backend:
+    image: your-backend-image:latest
+    ports:
+      - "5000:5000"
