@@ -1,5 +1,5 @@
 FROM python:3.9-slim
-RUN pip install --no-cache-dir streamlit requests
+RUN pip install --no-cache-dir streamlit requests 
 WORKDIR /app
 COPY app.py /app/
 EXPOSE 8501
