@@ -16,6 +16,6 @@ It acts as a simple HTML-JS application, needing to send requests to a running b
 
 2) Run the container with the built image
 
-- `docker run -p 8501:8501 rag-ui`
+- `docker run -p 9999:9999 rag-ui`
 
 3) Open localhost:8501

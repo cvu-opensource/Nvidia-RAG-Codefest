@@ -6,4 +6,4 @@
 
 2) Run the container with the built image
 
-- `docker run -p 8000:8000 --name milvusdb milvus-api`
+- `docker run -p 9998:9998 --name milvusdb milvus-api`

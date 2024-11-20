@@ -1,30 +1,37 @@
-# import os
-# import requests
-# import pandas as pd
-# import urllib.parse 
-# import fitz
-
-# from tqdm import tqdm
-# from io import StringIO
-# from bs4 import BeautifulSoup, SoupStrainer
-# from langchain.text_splitter import CharacterTextSplitter
-# from langchain_community.document_loaders import WebBaseLoader, DataFrameLoader, CSVLoader, UnstructuredTSVLoader
-
-from fastapi import FastAPI, HTTPException, UploadFile, File
+# API packages
+from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List, Optional
-from pymilvus import MilvusClient, DataType, CollectionSchema, FieldSchema
-import hashlib
+from fastapi import FastAPI, HTTPException, UploadFile, File
 
-from db import MilvusDB
+# Nvidia packages
+from langchain.text_splitter import CharacterTextSplitter
+from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings, ChatNVIDIA
+
+# Other scripts
+from database import MilvusDB
+from datahandler import DataHandler
 
 app = FastAPI()
 
+# Initialise models used
+embedder = NVIDIAEmbeddings(model="nvidia/nv-embedqa-e5-v5", base_url="http://localhost:8001/v1", truncate="END")
+text_splitter = CharacterTextSplitter(chunk_size=2048, separator=" ", chunk_overlap=64)
+
+# Initialise DataHandler instance 
+datahandler = DataHandler(embedder, text_splitter)
+
 # Initialize MilvusDB instance
-database = MilvusDB("http://localhost:19530")  
-database.create_collection("Documents", dimensions=1024)  
+database = MilvusDB("http://10.149.8.40:19530")  
+database.collection_name = "Documents"
+if not database.client.has_collection(database.collection_name):
+    database.create_collection(database.collection_name, dimensions=1024) 
 
-
+class ProcessRequest(BaseModel):
+    urls: Optional[List[str]] = None
+    pdfs: Optional[List[str]] = None
+    csvs: Optional[List[str]] = None
+    
 class InsertRequest(BaseModel):
     documents: List[str]
     embeddings: List[List[float]]
@@ -38,6 +45,18 @@ class SearchRequest(BaseModel):
 class FeedbackRequest(BaseModel):
     doc_id: str
     feedback: str
+
+@app.post("/process")
+async def process_data(request: ProcessRequest):
+    try:
+        data = datahandler.process_data(
+            urls=request.urls,
+            pdfs=request.pdfs,
+            csvs=request.csvs,
+        )
+        return {"status": "success", "message": "Data processed successfully", "data":data}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/insert")
 async def insert_data(request: InsertRequest):
@@ -55,9 +74,9 @@ async def insert_data(request: InsertRequest):
 async def search_data(request: SearchRequest):
     try:
         results = database.retrieve_data(
-            embedded_question=request.embedded_question,
-            question=request.question,
-            top_k=request.top_k,
+            embedded_question=embedder.embed_query(request.data['question']),
+            question=request.data['question'],
+            top_k=request.data['top_k'],
         )
         return {"status": "success", "results": results}
     except Exception as e:

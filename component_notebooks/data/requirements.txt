@@ -1,16 +1,24 @@
-# langchain==0.2.5
-# langchain_community==0.2.5
-# faiss-gpu # replace with faiss-gpu if you are using GPU
-# faiss-cpu
-# langchain-nvidia-ai-endpoints==0.1.2
-# requests pdfplumber spacy camelot-py 
-# pandas==2 numpy==1.26.4 
-# beautifulsoup4 
-# pymupdf
-# lxml
-# unstructured
-
+langchain==0.2.5
+langchain_community==0.2.5
+faiss-gpu # replace with faiss-gpu if you are using GPU
+faiss-cpu
+langchain-nvidia-ai-endpoints==0.1.2
+requests 
+pdfplumber 
+spacy 
+camelot-py 
+pandas==2 
+numpy==1.26.4 
+beautifulsoup4 
+pymupdf
+lxml
+unstructured
 fastapi
 uvicorn
 pymilvus
 pydantic
+requests
+numpy
+pandas
+tqdm
+beautifulsoup4

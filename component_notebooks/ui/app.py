@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 import os
 
+DATA_API = "http://localhost:9998"
+
 if "nim_api_endpoint" not in st.session_state:
     st.session_state["nim_api_endpoint"] = os.getenv("NIM_API_ENDPOINT", "")
 if "nim_api_key" not in st.session_state:
@@ -31,12 +33,11 @@ if page == "User Assistant":
         if user_query.strip():
             with st.spinner("Processing..."):
                 files = {"image": uploaded_image.getvalue()} if uploaded_image else None
-                data = {"query": user_query}
+                data = {"question": user_query, "top_k":5}
                 
                 response = requests.post(
-                    "http://localhost:5000/inference",  # TODO: TO INFERENCE PIPELINE
-                    data=data,
-                    files=files,
+                    DATA_API + "\search",  # TODO: TO INFERENCE PIPELINE
+                    data=data
                 ).json()
                 
                 st.subheader("Response:")
@@ -47,7 +48,7 @@ if page == "User Assistant":
                 
                 if st.button("Submit Feedback"):
                     feedback_response = requests.post(
-                        "http://localhost:5000/feedback",  # TODO: TO INGESTION PIPELINE
+                        DATA_API + "\feedback",  # TODO: TO INGESTION PIPELINE
                         json={"query": user_query, "response": response.get("answer", ""), "feedback": feedback},
                     )
                     if feedback_response.status_code == 200:
@@ -71,7 +72,7 @@ elif page == "Admin Panel":
             for file in uploaded_files:
                 with st.spinner(f"Ingesting {file.name}..."):
                     response = requests.post(
-                        "http://localhost:5000/ingest",  # TODO: TO INGESTION PIPELINE
+                        DATA_API + "/insert",  # TODO: TO INGESTION PIPELINE
                         files={"file": file.getvalue()},
                         data={"filename": file.name},
                     )
@@ -83,7 +84,7 @@ elif page == "Admin Panel":
         if link.strip():
             with st.spinner("Ingesting link..."):
                 response = requests.post(
-                    "http://localhost:5000/ingest",  # TODO: TO INGESTION PIPELINE
+                    DATA_API + "/insert",  # TODO: TO INGESTION PIPELINE
                     json={"link": link},
                 )
                 if response.status_code == 200:
@@ -95,7 +96,7 @@ elif page == "Admin Panel":
             for image in images:
                 with st.spinner(f"Ingesting {image.name}..."):
                     response = requests.post(
-                        "http://localhost:5000/ingest",  # TODO: TO INGESTION PIPELINE
+                        DATA_API + "/insert",  # TODO: TO INGESTION PIPELINE
                         files={"image": image.getvalue()},
                         data={"filename": image.name},
                     )

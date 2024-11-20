@@ -172,3 +172,9 @@ data/csv
 
 # Misc Shit
 notes.txt
+DB/volumes*
+DB/neo4j_data*
+*volumes*
+*.jar
+*nv_embedding*
+*.zip
