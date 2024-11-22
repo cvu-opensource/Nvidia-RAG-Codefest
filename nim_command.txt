@@ -1,0 +1,16 @@
+export NGC_API_KEY=Z2sxcmQwc2NicHM2ZXRjaWdkb3MycDNpb2Y6Njc3YjczN2EtMDg2MC00MTIxLTlhNTgtYzA1OTMyY2Q2YzUx
+export LOCAL_NIM_CACHE=~/.cache/nim
+mkdir -p "$LOCAL_NIM_CACHE"
+docker run -it --rm \
+    --gpus=3,4 \
+    --shm-size=16GB \
+    -e NGC_API_KEY=$NGC_API_KEY \
+    -v "$LOCAL_NIM_CACHE:/opt/nim/.cache" \
+    -u $(id -u) \
+    -p 9050:8000 \
+    --name llama3-8b \
+    nvcr.io/nim/meta/llama3-8b-instruct:1.0.0
+    
+    
+    
+docker run -it --rm     --gpus all     --shm-size=16GB     -e NGC_API_KEY=$NGC_API_KEY     -v "$LOCAL_NIM_CACHE:/opt/nim/.cache"     -u $(id -u)     -p 9050:8000  -t meta   nvcr.io/nim/meta/llama3-8b-instruct:1.0.0

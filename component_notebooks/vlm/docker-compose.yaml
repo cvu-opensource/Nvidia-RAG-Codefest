@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  qwen_vl_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: qwen-vl-service:latest
+    container_name: qwen-vl-container
+    ports:
+      - "8003:8003" 
+    environment:
+      - CACHE_DIR=/qwen_cp
+    volumes:
+      - /local/g05/qwen_cp:/qwen_cp  
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    runtime: nvidia
+    restart: always

@@ -12,10 +12,10 @@ It acts as a simple HTML-JS application, needing to send requests to a running b
 
 1) Build the docker image using the Dockerfile
 
-- `docker build -t rag-ui .`
+- `docker build -t streamlit-ui .`
 
 2) Run the container with the built image
 
-- `docker run -p 9999:9999 rag-ui`
+- `docker run -p 9999:9999 --rm streamlit-ui`
 
 3) Open localhost:8501

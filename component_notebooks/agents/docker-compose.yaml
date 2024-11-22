@@ -1,0 +1,9 @@
+services:
+  agency:
+    container_name: agency
+    image: agency
+    ports:
+      - "9997:9997"
+    volumes:
+      - /home/g05/project/component_notebooks/agents:/agents
+    # network_mode: "host"

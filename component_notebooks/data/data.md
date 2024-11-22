@@ -2,8 +2,8 @@
 
 1) Build the docker image using the Dockerfile
 
-- `docker build -t milvus-api .`
+- `docker build -t data-api .`
 
 2) Run the container with the built image
 
-- `docker run -p 9998:9998 --name milvusdb milvus-api`
+- `docker run --rm -p 9998:9998 --name data-api data-api`

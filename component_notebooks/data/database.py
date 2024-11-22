@@ -14,10 +14,12 @@ class MilvusDB:
     Not-so-masterfully handles the vector database using Milvus and all DB related functionality.
     """
 
-    def __init__(self, uri):
+    def __init__(self, uri, llm):
         self.uri = uri
         self.client = None
         self.collection_name = None
+        
+        self.llm = llm
 
         self.similarity_threshold = 0.99  # Similarity between new input data and existing data
         self.set_up_db()
@@ -174,7 +176,6 @@ class MilvusDB:
 
         Output: None
         """
-        print(self.client.search(collection_name=self.collection_name, filter=f"id == '{doc_id}'", output_fields=["text", "source", "date_added", "category", "relevancy"])[0])
         embeddding, text, score = self.client.search(collection_name=self.collection_name, filter=f"id == '{doc_id}'", output_fields=["text", "source", "date_added", "category", "relevancy"])[0]
         
         # Update score based on feedback
@@ -194,7 +195,7 @@ class MilvusDB:
         Returns:
             - categories:   List of categories relevant to data
         """
-        categories = llm.invoke(f" \
+        categories = self.llm.invoke(f" \
             You are an expert in Singapore's corporate laws and regulations. Your task is to analyze the given text or question, and assign it appropriate tags from the list below. Tags should capture the core topics, entities, and relevant categories mentioned in the text or question given. \
             Only return 3 words of the the top 3 most relevant tags from the list below, without giving any other comments. \
             List of Tags: \
@@ -275,7 +276,7 @@ class MilvusDB:
             print(f"Error checking if ID exists: {e}")
             return False
 
-    def retrieve_data(self, embedded_question, question, top_k=5, scaling_factor=1.1):
+    def retrieve_data(self, embedded_question, question, top_k=5, scaling_factor=0.8):
         """
         Retrieves vector data from DB based on embedded question
 
@@ -295,8 +296,8 @@ class MilvusDB:
             data=[embedded_question],  
             limit=top_k, 
             search_params={"metric_type": "COSINE", "params": {"nprobe": 10}},
-            filter=category_filter, 
-            output_fields=["text", "source", "date_added", "category"]
+            # filter=category_filter, 
+            output_fields=["text", "source", "category"]
         )[0]
 
         distances = [res['distance'] for res in search_res]
@@ -308,13 +309,33 @@ class MilvusDB:
             data=[embedded_question],  
             limit=20, 
             search_params={"metric_type": "COSINE", "params": {"nprobe": 10}},
-            filter=category_filter, 
-            output_fields=["text", "source", "date_added", "category", "relevancy"]
+            # filter=category_filter, 
+            output_fields=["text", "source", "category"]
         )[0]
 
         filtered_res = [res for res in search_res if res['distance'] > adaptive_threshold]
+        restructured_res = {res["entity"]["text"]:res['entity']['source'] for res in filtered_res}
         self.release_collection()
-        return filtered_res
+        return restructured_res
+    
+    def rechunk_data(self, data, new_chunk_size, chunk_overlap_size=32):
+        """
+        Rechunks outputted data to a smaller size so the rereranker can use it 
+
+        Parameters:
+            - data [dict]:          Dictionary of text data and their sources
+            - new_chunk_size [int]: New size to rechunk data to
+
+        Output:
+            - new_data [dict]:      Rechunked dictionary of tet and sources
+        """
+        new_data = {}
+        for text, source in data.items():
+            current = 0
+            while current <= len(text):
+                new_data[text[current:min(current + new_chunk_size, len(text) - 1)]] = source
+                current += new_chunk_size - chunk_overlap_size
+        return new_data
     
     def get_all_records(self, limit=10000):
         """

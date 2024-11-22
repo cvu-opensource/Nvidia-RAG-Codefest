@@ -1,0 +1,19 @@
+FROM python:3.9-slim-buster
+
+COPY multi-agent-requirements.txt /tmp/multi-agent-requirements.txt
+
+RUN pip install -r /tmp/multi-agent-requirements.txt 
+RUN pip install langgraph
+RUN pip install langchain-nvidia-ai-endpoints==0.3.5
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+RUN apt update && apt install -y git-all
+
+RUN pip install git+https://github.com/huggingface/transformers@aae496dd154f72242a7d6ebeca132763d3dbc903 accelerate
+RUN pip install qwen-vl-utils[decord]
+RUN pip uninstall -y tensorflow && pip install tensorflow-cpu
+
+RUN pip install neo4j langchain-experimental
+    
+    
+ENTRYPOINT ["/bin/bash"]

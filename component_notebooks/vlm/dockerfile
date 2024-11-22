@@ -1,0 +1,14 @@
+FROM python:3.9-slim-buster
+
+RUN apt update -y && apt install -y git
+RUN pip install git+https://github.com/huggingface/transformers@21fac7abba2a37fae86106f87fcf9974fd1e3830 accelerate
+RUN pip install qwen-vl-utils[decord]
+RUN pip install torchvision
+RUN pip install fastapi uvicorn
+RUN pip install python-multipart
+
+WORKDIR /app
+COPY . .
+
+EXPOSE 8003
+CMD ["uvicorn", "qwen:app", "--host", "0.0.0.0", "--port", "8003"]
