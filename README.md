@@ -1,72 +1,140 @@
-# Project description
-Using NIM APIs to implement a RAG system that ingests data scraped from the web, pdfs, or images and returns an output ranked by similarity
-I love NIM! NIM is the goat!
+# README
 
-# Current list of to-dos:
-1. **Simple User Interface**
-  - Send in queries with texts or images
-  - Display responses in a chat-like format
-  - User feedback
+## Retrieval-Augmented Generation (RAG) Project  
+### Nvidia x SMC CodeFest Singapore - Product of team Asper Lovers
 
-2. **Data Handler**
-  - Embed images with CLiP/ViT/CNN or something, maybe use a separate model to extract features 
-  - Store more metadata (eg. tags, date)
+This project was developed as part of the **Nvidia x SMC CodeFest Singapore**, where participants were challenged to create a robust Retrieval-Augmented Generation (RAG) architecture leveraging **Nvidia NIM APIs**.  
 
-3. **MilvusDB**
-  - Find a way to check/monitor sites for changes regularly and upsert into db
-  - Use metadata stored to search for more relevant data instead of searching through all vectors
-  - Implement reranking 
+### Project Highlights  
 
-4. **Prompt Engineering**
-  - Figure out how
+- **Infrastructure**:  
+  We utilized cutting-edge clusters provided by **Sustainable Metal Cloud (SMC)**, tailored specifically for the event as per Nvidia's requirements. These clusters were equipped with:
+  - **8 NVIDIA A100 GPUs** (80GB RAM each).  
+  - Immersive cooling systems for optimal performance.  
 
-5. **Containerise**
-  - 4 containers for 4 segmented parts
-    - UI
-    - DB
-    - Ingestion
-    - Inference
+- **Development Stack**:  
+  The project involved extensive use of **Python scripts**, **Jupyter notebooks**, and **Docker** to orchestrate a modular RAG architecture.  
 
-# Our current competition:
+---
 
-### 1) IRAC 28 + digispecs2... bob.
-### 2) A fireside chat with the IRAS bot. It reads:
+### Components Overview  
 
-Me: I am a permanent-resident earning $50,000 income. What is my tax rate?
+Our architecture consists of several modular services, all organized within the `RAG components` folder. Each component is self-contained with the following:  
+- **Python scripts**  
+- **Dockerfiles**  
+- **Docker Compose files**  
 
-Bot: You may refer to the table below for the Resident income tax rates from YA 2017 to YA 2023.
- 
-  Do note that the tax rates are applied on the chargeable income. 
-   
-  Chargeable income = (Total taxable income - allowable expenses - approved donations - personal reliefs)
-  (translation options)
-  
-  To achieve greater progressivity, the top marginal personal income tax rate will be increased with effect from YA 2024.
-  
-  (some tabular data)
-  
-  You may refer to the table below for resident income tax rates from YA 2024:
+The major **components** are:  
 
-  (other tabular data)
+1. **Milvus Database Instance**  
+   - For efficient storage and retrieval of vector embeddings.  
+
+2. **Data APIs**  
+   - Used for data ingestion and processing pipelines.  
+
+3. **Multi-Agent Tools**  
+   - Facilitating interaction and task delegation across different agents, binded to our LLM
+
+4. **Vision-Language Model (VLM) Instance**  
+   - To enable multimodal query processing capabilities.  
+
+The **models** used are:
+
+1. Large Language Models
+    - llama-3.1-8b-instruct
+
+2. Embedders
+    - nv-embedqa-e5-v5
+    - neo4j embedder?
+
+3. Vision Language Models
+    - Qwen2-VL-7B-Instruct
+
+4. Reranker
+    - nv-rerankqa-mistral-4b-v3
+
+---
+
+### **Product Showcase**  
+
+Here are some snapshots of our completed RAG system and its components:  
+
+#### **1. User Interface**  
+
+*Description*: The **main interface** of the RAG system, showcasing how users can interact with the chatbot to retrieve information.  
+
+<img src="static\ui\main ui.jpg" alt="User feedback and Conversation History" width="400">
+
+*Description*: Chatbot's **response** to user query, including source citation.
+
+<img src="static\ui\model-response.jpg" alt="User feedback and Conversation History" width="400">
+
+*Description*: User **feedback** portion after receiving chatbot's response, along with viewable **conversation history** (incorporated into further LLM context). 
+
+<img src="static\ui\feedback-and-history.jpg" alt="User feedback and Conversation History" width="400">
+
+*Description*: Verification of model's accuracy using very specific detail found in tabular data.
+
+<img src="static\ui\pwc-example.jpg" alt="User feedback and Conversation History" width="400">
+
+#### **2. System Architecture Overview**  
+*Description*: A high-level diagram of the system architecture, illustrating how the different components interact.  
+![System Architecture](path/to/system-architecture.png)  
+
+#### **3. Multi-Agent Tool**  
+*Description*: A visual representation of the multi-agent tool in action, demonstrating task delegation and collaboration.  
+![Multi-Agent Tool](path/to/multi-agent-tool.png)  
+
+#### **4. Vision-Language Model Integration**  
+*Description*: An example of the Vision-Language Model (VLM) processing multimodal inputs and delivering results.  
+![VLM Integration](path/to/vlm-integration.png)  
+
+#### **5. Final Presentation**  
+*Description*: Our final [presentation](https://docs.google.com/presentation/d/1_2nHfmNehYHGppRed6TObZtmIriuuReuNpOEMso0quc/edit#slide=id.p2)   to other corporations and Nvidia experts.
 
 
-Me: I am blind. I cannot see tabular data. Can you tell me through text?
+---
 
-Bot: Sorry. I didn't catch that. Would you like to rephrase your question?
+### How to Use  
 
-    Here are some tips:
-    
-    ✔ Ask your question in a single message. Keep it short and concise.
-    
-    ✔ Include keywords in your questions e.g. How to pay tax via GIRO
-    Original
-    
-    I found some information from Google which may be of help to you.
+1. **Clone the Repository**  
+   ```bash
+   git clone <repository-url>
+   cd <repository-folder>
+   ```
 
-    VOLUME 47 | NUMBER 1 | FREE PAPERS | JANUARY 2018
-    Territorial Complementarities and Competition for Oil and Gas FDI in ...
-    A*DAX: A Platform for Cross-domain Data Linking, Sharing and ...
+2. **Navigate to the `RAG components` Folder**  
+   Each service has its dedicated subfolder. Navigate to the desired service's folder to explore its configuration.  
 
-### I have concluded something. IRAS bot is weak. And fragile. And pathetic. 
+3. **Run Services Locally**  
+   - Each component has its own `Dockerfile` and `docker-compose.yml` for easy deployment.  
+   - To run a specific component:  
+     ```bash
+     docker-compose up
+     ```  
 
-We must be better.
+4. **Modify and Experiment**  
+   - All Python scripts are modular and well-documented to allow easy experimentation and integration.  
+
+---
+
+### Acknowledgments  
+
+This project would not have been possible without:  
+- **Nvidia**, for their state-of-the-art NIM APIs and support.  
+- **SMC**, for hosting powerful local clusters that facilitated the development and testing of our RAG architecture.  
+
+For further details, feel free to explore the project files or reach out to the contributors.  
+
+---  
+
+### Contributors
+
+| Name            | Role                          | GitHub Profile                        | LinkedIn Profile                       |
+|-----------------|-------------------------------|---------------------------------------|----------------------------------------|
+| **Gerard Lum**   | Full Stack Developer      | [GitHub](https://github.com/username) | [https://www.linkedin.com/in/gerardlumkaien/](https://www.linkedin.com/in/gerardlumkaien/) |
+| **Benjamin Goh** | AI Specialist   | [GitHub](https://github.com/username) | [https://www.linkedin.com/in/benjamin-goh-45a0a7307/](https://www.linkedin.com/in/benjamin-goh-45a0a7307/) |
+| **Skyler Lee**   | Solutions Architect, Docker Expert  | [GitHub](https://github.com/username) | [https://www.linkedin.com/in/skyler-lee-6465741a7/](https://www.linkedin.com/in/skyler-lee-6465741a7/) |
+| **Ng Le Jie**    | Software Engineer, LLM Expert | [GitHub](https://github.com/username) | [https://www.linkedin.com/in/le-jie-ng-13a547211/](https://www.linkedin.com/in/le-jie-ng-13a547211/) |
+| **Gavin Lim**    | Visual Designer  | [GitHub](https://github.com/username) | [https://www.linkedin.com/in/gavinlimsh/](https://www.linkedin.com/in/gavinlimsh/) |
+

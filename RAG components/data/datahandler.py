@@ -1,32 +1,41 @@
-# common packages
+# General packages 
 import os
+import requests
 import numpy as np
 import pandas as pd
-import requests
-import fitz
 from tqdm import tqdm
+
+# Ingestion packages
+import fitz
+import urllib.parse  
 from io import StringIO
 from bs4 import BeautifulSoup, SoupStrainer
-
-# cancerous langchain stuffs
-from langchain_community.document_loaders import WebBaseLoader, DataFrameLoader, CSVLoader, UnstructuredTSVLoader, TextLoader, UnstructuredHTMLLoader
-from langchain.text_splitter import CharacterTextSplitter
-from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings # just typing, we dont define any embedder here. don't worry.
+from langchain_community.document_loaders import WebBaseLoader, DataFrameLoader, CSVLoader, UnstructuredTSVLoader
 
 class DataHandler:
     """
     Masterfully handles data scraping, preprocessing, and other data-related functionalities in this notebook.
     """
 
-    def __init__(self, embedder: NVIDIAEmbeddings, data_home="/raw_web_data"):
+    def __init__(self, embedder, text_splitter, csv_path="./data/csvs", pdf_path="./data/pdfs"):
         # Paths and storage
-        self.data_home = data_home
-        self.csv_path = os.path.join(self.data_home, "csv")
-        self.pdf_path = os.path.join(self.data_home, "pdf")
-        self.html_path = os.path.join(self.data_home, "html")
+        self.csv_path = csv_path
+        self.pdf_path = pdf_path
         self.visited_urls = set()
-        self.max_path_length = os.pathconf('/', 'PC_NAME_MAX')
+        
+        # Setting up data containers
+        self.set_up_class()
 
+        # Text splitter
+        self.text_splitter = text_splitter
+
+        # Ensure directories exist
+        os.makedirs(self.csv_path, exist_ok=True)
+        os.makedirs(self.pdf_path, exist_ok=True)
+        
+        self.embedder = embedder
+        
+    def set_up_class(self):
         # Data containers
         self.raw_data = []
         self.all_data = []
@@ -40,15 +49,6 @@ class DataHandler:
         # Final data containers
         self.embedded_data = []
         self.metadata = []
-
-        # Text splitter
-        self.text_splitter = CharacterTextSplitter(chunk_size=2048, separator=" ", chunk_overlap=64)
-
-        # Ensure directories exist
-        os.makedirs(self.csv_path, exist_ok=True)
-        os.makedirs(self.pdf_path, exist_ok=True)
-        
-        self.embedder = embedder # type hints aside, im not sure if other embeddings can work in this place.
         
     @staticmethod
     def clean_text(text):
@@ -91,7 +91,7 @@ class DataHandler:
         else:
             similarity_score = 0
 
-        return (0.1 * keyword_score) + (0.9 * similarity_score) > 0.4
+        return (0.1 * keyword_score) + (0.9 * similarity_score) > 0.5
     
 
     def embed_text(self, text):
@@ -185,11 +185,10 @@ class DataHandler:
                 raw_text = main_content.get_text(separator=" ", strip=True)
                 if self.filter_text(raw_text):
                     split_data = self.text_splitter.split_text(self.clean_text(raw_text))
-                    # print(split_data)
+
                     self.textual_data.extend(split_data)
                     self.textual_metadata.extend([{"source": url, "date_added": "None"} for _ in split_data])
 
-                    
     def scrape_websites(self, urls, max_depth, depth=0):
         """
         Recursively scrapes a website for HTML content and tables and then processes the data into loaders
@@ -209,11 +208,6 @@ class DataHandler:
                     if response.status_code != 200:
                         print(f"Failed to retrieve {url}")
                         return
-                    
-                    save_fp = os.path.join(self.html_path, url.replace("/", "_"))[:self.max_path_length - 4]+ ".txt"
-                    print("FILEPATH SAVING TO IS", save_fp ) 
-                    with open( save_fp, "wb") as f:
-                        f.write(response.content)
 
                     soup = BeautifulSoup(response.content, "html.parser")
                     self.visited_urls.add(url)
@@ -234,36 +228,6 @@ class DataHandler:
 
             _scrape(base_url, depth)
             self.create_loaders()
-            
-            
-    def from_cached_websites(self, raws_folder):
-        """
-        Recursively scrapes a website for HTML content and tables and then processes the data into loaders
-
-        Args:
-            - urls (list):      list of urls to scrape from
-            - max_depth (int):  how many sublinks into the main website we wish to mdig through
-            - depth (int):      current/starting depth of sublinks reached
-        """
-        print(len(os.listdir(raws_folder)))
-        for file in os.listdir(raws_folder):
-            try:
-                with open( os.path.join(raws_folder, file), "r") as f:
-                    htmlstring = f.read()
-
-                soup = BeautifulSoup(htmlstring, "html.parser")
-                self.visited_urls.add(file) # supposed to be a url, but we just pass in file for now for placeholder variable. later fix.
-                self.raw_data.append((file, soup))
-                print("file", file)
-                # Process tables
-                self.extract_table_elements(url=file, tables=soup.find_all("table"))
-
-            except Exception as e:
-                print(f"Caught error in function from_cached_websites, {e}")
-        
-        self.create_loaders()
-            
-
 
     def scrape_pdfs(self, pdf_folder=None):
         """
@@ -297,4 +261,19 @@ class DataHandler:
         self.all_data = self.textual_data + self.tabular_data
         self.embedded_data = [self.embed_text(text) for text in tqdm(self.textual_data, desc=f"Total pieces of textual data: {len(self.textual_data)}")] + [self.embed_text(text) for text in tqdm(self.tabular_data, desc=f"Total pieces of tabular data: {len(self.tabular_data)}")]
         self.metadata = self.textual_metadata + self.tabular_metadata
+                
+    def process_data(self, data):
+        """
+        Takes in any number of urls, pdfs or csvs and prepares it for insertion using the above methods, returning the formatted textual data, embedded data and metadata
+
+        Args:   
+            - data [dict]:  dictionary of urls, pdfs and csvs
+        """
+        self.set_up_class()
         
+        self.scrape_websites(data['urls'], max_depth=5)
+        self.scrape_pdfs(data['pdfs'])
+        self.scrape_csvs(data['csvs'])
+        
+        self.prepare_data_for_insertion()
+        return self.all_data, self.embedded_data, self.metadata

@@ -23,5 +23,5 @@ RUN pip install uvicorn fastapi
 
 EXPOSE 9997
 WORKDIR /agents
-# CMD ["python", "/agents/multi-agent.py"]
+
 CMD ["uvicorn", "lj-multi-agent:app", "--host", "0.0.0.0", "--port", "9997", "--reload"]

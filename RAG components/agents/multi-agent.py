@@ -38,22 +38,16 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_experimental.llms.ollama_functions import OllamaFunctions
 
-# api for neo4j
 from infer_neo4j import GraphRAG
 
-
 # Initialise objects for models used
-# main llm
 main_llm = ChatNVIDIA(model="meta/llama-3.1-8b-instruct", base_url="http://10.149.8.40:8000/v1")
 
-# mewvus
 milvus_embedder = NVIDIAEmbeddings(model="nvidia/nv-embedqa-e5-v5", base_url="http://10.149.8.40:8001/v1", truncate="END")
 milvusDB_api_loc = "http://10.149.8.40:9998"
 
-# rank 3SG skyler lee
 rerank_client = NVIDIARerank(model="nvidia/nv-rerankqa-mistral-4b-v3", base_url="http://10.149.8.40:8002")
 
-# neolithic 4 jay
 neo4j_embedder = OllamaEmbeddings(model="mxbai-embed-large", base_url="http://10.149.8.40:11434")
 neo4j_llm = OllamaFunctions(model="llama3.1", temperature=0, format="json", base_url="http://10.149.8.40:11434")
 neo4j_uri="neo4j://10.149.8.40:7687"
@@ -67,14 +61,11 @@ graphRAG = GraphRAG(
     embedder=neo4j_embedder,
 )
     
-
 app = FastAPI()
-
 
 # tvly_api_key = getpass.getpass("Enter your tvly API key: ")
 # assert tvly_api_key.startswith("tvly-"), f"{tvly_api_key[:5]}... is not a valid key"
 os.environ["TAVILY_API_KEY"] = "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"
-
 
 class Conversation(TypedDict):
     """State representing the customer's conversation."""
@@ -134,7 +125,6 @@ SYSTEM_INSTRUCTIONS = (
 # This is the message with which the system opens the conversation.
 WELCOME_MSG = "Welcome to the ASPER LOVERS LEGAL Bot. Type `q` to quit. How may I serve you today?"
 
-    
 class Tools:
     """
     Class to house tool related attributes and functions.
@@ -199,17 +189,10 @@ class Tools:
         """
         Do a rerank sgt!
         """
-        # thing = reranker_client.compress_documents(query=query, documents=documents)
-        # print(thing)
-        # print("query", query)
-        # print('documents', documents)
         rerank_response = sorted(reranker_client.compress_documents(query=query, documents=documents), key=lambda x:x.metadata['relevance_score'], reverse=True)
-        # print(rerank_response)
 
-        # Select top result (returns to model top result and cite)
         if rerank_response:
             top_result = rerank_response[0]
-            # reranker_output = f"Top Result: {top_result.page_content}\n\nCite: {top_result.metadata}"
             reranker_output = f"Top Result: {top_result.page_content}"
         else:
             reranker_output = "No relevant results found for the query"
@@ -233,9 +216,6 @@ class Tools:
             str: The most relevant information retrieved vector and graph RAG approach.
 
         """
-        
-        # This should be able to be parallelized. Use threading/multiprocess later?
-
         # Step 1: Embed the query, and retrieve from milvus
         embedded_query = self.milvus_embedder.embed_query(query)
         documents = self.query_milvus(query, embedded_query, self.DATA_API)
@@ -341,8 +321,6 @@ class Agency:
 
     def maybe_route_to_tools(self, state: Conversation) -> Literal["tools", "human"]:
         """Route between human or tool nodes, depending if a tool call is made."""
-        # print("State:", state)
-        # print("msgs", msgs := state.get("messages", []))
         if not (msgs := state.get("messages", [])):
             raise ValueError(f"No messages found when parsing state: {state}")
 
@@ -354,9 +332,6 @@ class Agency:
         ai_msg = messages[-1]
         print(ai_msg)
         print(dir(ai_msg))
-       # if hasattr(ai_msg, 'finish_reason'):
-      #      if ai_msg.finish_reason == 'stop':
-     #           return END
         # if no AIMessage inside, forcibly call chatbot to run.
         if not any([isinstance(msg, AIMessage) for msg in messages]):
             return "chatbot"
@@ -366,29 +341,6 @@ class Agency:
         else:
             return "end"
         
-        
-    
-
-# db_tools = Tools()
-# test = db_tools.rag_from_database("What is the Employment Act related to? Who does it affect?")
-# print(test)
-
-        
-    
-#    print("RAG from database tool called! Retrieving relevant items from milvus and neo4j...") 
-#    PLACEHOLDER = """Everything is Illegal"""
-
-#    return PLACEHOLDER
-
-
-# Define the tools and create a "tools" node.
-
-# tools = [db_tools.rag_from_database, TavilySearchResults(max_results=3)]
-# tool_node = ToolNode(tools)
-
-# # Attach the tools to the model so that it knows what it can call.
-# llm_with_tools = llm.bind_tools(tools)
-print("WHAT THE FUCKKKKKK")
 agencie = Agency(
     milvus_embedder,
     rerank_client,
@@ -417,8 +369,3 @@ async def execute_state_graph(
     yapping = agencie.invoke_graph(text)
     print(yapping)
     return yapping
-
-
-   
-# if __name__=="__main__":
-#     uvicorn.run("multi-agent:app", host="0.0.0.0", port=9997, reload=True)

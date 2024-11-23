@@ -1,9 +1,0 @@
-# idk why but llama on nim just dont work. 
-# billions must die. use ollama instead fool.
-
-
-docker run -d --gpus=4,5 -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
-
-docker exec -dit ollama_neo4j ollama run llama3.1 # for llama to give you relations during buildtime
-
-docker exec -dit ollama_neo4j ollama run mxbai-embed-large # to store & query from vector graph
