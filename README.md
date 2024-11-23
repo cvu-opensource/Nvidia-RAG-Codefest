@@ -63,11 +63,11 @@ Here are some snapshots of our completed RAG system and its components:
 
 *Description*: The **main interface** of the RAG system, showcasing how users can interact with the chatbot to retrieve information.  
 
-<img src="static\ui\main ui.jpg" alt="User feedback and Conversation History" width="400">
+<img src="static\ui\main-ui.jpg" alt="Main UI" width="400">
 
 *Description*: Chatbot's **response** to user query, including source citation.
 
-<img src="static\ui\model-response.jpg" alt="User feedback and Conversation History" width="400">
+<img src="static\ui\model-response.jpg" alt="Model Response" width="400">
 
 *Description*: User **feedback** portion after receiving chatbot's response, along with viewable **conversation history** (incorporated into further LLM context). 
 
@@ -75,7 +75,7 @@ Here are some snapshots of our completed RAG system and its components:
 
 *Description*: Verification of model's accuracy using very specific detail found in tabular data.
 
-<img src="static\ui\pwc-example.jpg" alt="User feedback and Conversation History" width="400">
+<img src="static\ui\pwcs-example.jpg" alt="PWCS Example" width="400">
 
 #### **2. System Architecture Overview**  
 *Description*: A high-level diagram of the system architecture, illustrating how the different components interact.  
