@@ -1,9 +1,11 @@
 # README
 
 ## Retrieval-Augmented Generation (RAG) Project  
-### Nvidia x SMC CodeFest Singapore - Product of team Asper Lovers
+### Nvidia x SMC CodeFest Singapore - Product of Team Asper Lovers
 
 This project was developed as part of the **Nvidia x SMC CodeFest Singapore**, where participants were challenged to create a robust Retrieval-Augmented Generation (RAG) architecture leveraging **Nvidia NIM APIs**.  
+
+A **Retrieval-Augmented Generation (RAG)** system combines a retrieval mechanism with a language model to generate contextually accurate and grounded responses. By retrieving relevant information from a structured or unstructured knowledge base, such as documents or embeddings, and integrating it with an LLM, the system ensures factual and context-aware outputs. In our project, we enhanced the RAG system's potential by adding **extra context through Vision-Language Models (VLMs)** and experimenting with a **hybrid RAG** approach that combined **vector-based retrieval for semantic search** and **graph-based retrieval for relationship-driven queries**, further improving its accuracy and versatility for complex multimodal tasks.
 
 ### Project Highlights  
 
@@ -27,16 +29,16 @@ Our architecture consists of several modular services, all organized within the 
 The major **components** are:  
 
 1. **Milvus Database Instance**  
-   - For efficient storage and retrieval of vector embeddings.  
+   - For efficient storage and retrieval of vector embeddings, GPU-accelerated for more efficient retrieval.  
 
 2. **Data APIs**  
-   - Used for data ingestion and processing pipelines.  
+   - Used for data ingestion and processing pipelines, and accessing VectorDB for VectorRAG.  
 
 3. **Multi-Agent Tools**  
-   - Facilitating interaction and task delegation across different agents, binded to our LLM
+   - Facilitating interaction and task delegation across different agents, binded to our LLM.
 
 4. **Vision-Language Model (VLM) Instance**  
-   - To enable multimodal query processing capabilities.  
+   - To enable multimodal query processing capabilities for additional user query context.  
 
 The **models** used are:
 
@@ -45,7 +47,6 @@ The **models** used are:
 
 2. Embedders
     - nv-embedqa-e5-v5
-    - neo4j embedder?
 
 3. Vision Language Models
     - Qwen2-VL-7B-Instruct
@@ -55,7 +56,7 @@ The **models** used are:
 
 ---
 
-### **Product Showcase**  
+### Product Showcase  
 
 Here are some snapshots of our completed RAG system and its components:  
 
@@ -79,17 +80,10 @@ Here are some snapshots of our completed RAG system and its components:
 
 #### **2. System Architecture Overview**  
 *Description*: A high-level diagram of the system architecture, illustrating how the different components interact.  
-![System Architecture](path/to/system-architecture.png)  
 
-#### **3. Multi-Agent Tool**  
-*Description*: A visual representation of the multi-agent tool in action, demonstrating task delegation and collaboration.  
-![Multi-Agent Tool](path/to/multi-agent-tool.png)  
+<img src="static\infographics\Architecture.png" alt="System Architecture" width="800">
 
-#### **4. Vision-Language Model Integration**  
-*Description*: An example of the Vision-Language Model (VLM) processing multimodal inputs and delivering results.  
-![VLM Integration](path/to/vlm-integration.png)  
-
-#### **5. Final Presentation**  
+#### **3. Final Presentation**  
 *Description*: Our final [presentation](https://docs.google.com/presentation/d/1_2nHfmNehYHGppRed6TObZtmIriuuReuNpOEMso0quc/edit#slide=id.p2)   to other corporations and Nvidia experts.
 
 
@@ -123,8 +117,6 @@ Here are some snapshots of our completed RAG system and its components:
 This project would not have been possible without:  
 - **Nvidia**, for their state-of-the-art NIM APIs and support.  
 - **SMC**, for hosting powerful local clusters that facilitated the development and testing of our RAG architecture.  
-
-For further details, feel free to explore the project files or reach out to the contributors.  
 
 ---  
 
