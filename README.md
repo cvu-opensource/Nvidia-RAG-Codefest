@@ -1,7 +1,5 @@
-# README
-
-## Retrieval-Augmented Generation (RAG) Project  
-### Nvidia x SMC CodeFest Singapore - Product of Team Asper Lovers
+# Retrieval-Augmented Generation (RAG) Project  
+## Nvidia x SMC CodeFest Singapore - Product of Team Asper Lovers
 
 This project was developed as part of the **Nvidia x SMC CodeFest Singapore**, where participants were challenged to create a robust Retrieval-Augmented Generation (RAG) architecture leveraging **Nvidia NIM APIs**.  
 
@@ -124,9 +122,8 @@ This project would not have been possible without:
 
 | Name            | Role                          | GitHub Profile                        | LinkedIn Profile                       |
 |-----------------|-------------------------------|---------------------------------------|----------------------------------------|
-| **Gerard Lum**   | Full Stack Developer      | [GitHub](https://github.com/username) | [https://www.linkedin.com/in/gerardlumkaien/](https://www.linkedin.com/in/gerardlumkaien/) |
+| **Gerard Lum**   | Full Stack Developer      | [GitHub](https://github.com/gerardlke) | [https://www.linkedin.com/in/gerardlumkaien/](https://www.linkedin.com/in/gerardlumkaien/) |
 | **Benjamin Goh** | AI Specialist   | [GitHub](https://github.com/username) | [https://www.linkedin.com/in/benjamin-goh-45a0a7307/](https://www.linkedin.com/in/benjamin-goh-45a0a7307/) |
 | **Skyler Lee**   | Solutions Architect, Docker Expert  | [GitHub](https://github.com/username) | [https://www.linkedin.com/in/skyler-lee-6465741a7/](https://www.linkedin.com/in/skyler-lee-6465741a7/) |
 | **Ng Le Jie**    | Software Engineer, LLM Expert | [GitHub](https://github.com/username) | [https://www.linkedin.com/in/le-jie-ng-13a547211/](https://www.linkedin.com/in/le-jie-ng-13a547211/) |
 | **Gavin Lim**    | Visual Designer  | [GitHub](https://github.com/username) | [https://www.linkedin.com/in/gavinlimsh/](https://www.linkedin.com/in/gavinlimsh/) |
-
